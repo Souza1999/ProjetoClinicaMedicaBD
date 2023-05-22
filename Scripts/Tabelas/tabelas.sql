@@ -90,14 +90,14 @@ ALTER TABLE Numero_Telefone_Paciente ADD CONSTRAINT FK_Numero_telefone_2
     REFERENCES PACIENTE (cpf);
 
 
-Alter TABLE PACIENTE add  constraint checkEstadoUrgencia  check (estado_urgencia < 6 && estado_urgencia > 0 );
+Alter TABLE PACIENTE add  constraint checkEstadoUrgencia  check (estado_urgencia < 6 AND estado_urgencia > 0 );
 Alter TABLE PACIENTE add  constraint checkData_Nascimento  check (Data_Nascimento < current_date);
 
-Alter TABLE FUNCIONARIO add  constraint checkData_nascimento check (Data_nascimento < current_date && age(Data_Nascimento) < interval '18 years');
+Alter TABLE FUNCIONARIO add  constraint checkData_nascimento check (Data_nascimento < current_date AND age(Data_Nascimento) < interval '18 years');
 Alter TABLE FUNCIONARIO add  constraint checkData_admissao check (Data_admissao <= current_date);
 Alter TABLE FUNCIONARIO add  constraint checkSalario check (salario > 0.0);
 
 Alter TABLE ESPECIALIDADE add  constraint checkPreco_consulta check (preco_consulta >= 0.0);
 
 Alter TABLE RECEITA add  constraint checkData_Realizacao check (Data_Realizacao <= current_date);
-Alter TABLE RECEITA add  constraint checkData_Validade check (data_Validade <= current_date && age(data_Validade) <= interval '30 days');
+Alter TABLE RECEITA add  constraint checkData_Validade check (data_Validade <= current_date AND age(data_Validade) <= interval '30 days');
